@@ -23,4 +23,11 @@ protected:
 
 	UPROPERTY(EditAnywhere, Category = "AI426 | Managers")
 	TSubclassOf<class APoolManager> PoolManager;
+
+#pragma region DEBUGMESSAGE
+
+	static void DebugMessage(FString Message = "Debug Message On Screen", float MessageTimeOnScreen = 5.0f,
+		FColor Messagecolor = FColor::Emerald);
+	static void DebugLogMessage(FString LogMessage);
+#pragma endregion
 };

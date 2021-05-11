@@ -16,6 +16,8 @@ class AI426_API ASpawnActor : public AAPlaceable
 	GENERATED_BODY()
 	
 public:
+	ASpawnActor();
+
 	virtual void BeginPLay();
 	virtual void Tick(float DeltaTime);
 
@@ -31,13 +33,16 @@ protected:
 	float SpawnTime = 0.0f;
 
 	UPROPERTY(EditAnywhere, Category = "AI426")
+	class UArrowComponent* SpawnPositionArrow;
+
+	UPROPERTY(EditAnywhere, Category = "AI426")
 	eSpawnerMode SpawnerMode = eSpawnerMode::SINGLE_SPAWN;
 
 	UPROPERTY(EditAnywhere, Category = "")
 	TSubclassOf<AActor> ActorToSpawn;
 
 	UPROPERTY()
-	TArray<AActor> ActorsSpawn;
+	TArray<AActor*> ActorsSpawn;
 
 
 };

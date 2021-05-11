@@ -2,6 +2,13 @@
 
 
 #include "AI426/ItemBase/SpawnActor.h"
+#include <Components/ArrowComponent.h>
+
+ASpawnActor::ASpawnActor()
+{
+	SpawnPositionArrow = CreateDefaultSubobject<UArrowComponent>("Spawn Position Arrow");
+	SpawnPositionArrow->SetupAttachment(RootComponent);
+}
 
 void ASpawnActor::BeginPLay()
 {
@@ -14,17 +21,24 @@ void ASpawnActor::Tick(float DeltaTime)
 
 	if (SpawnTime >= TimerToSpawn)
 	{
+		AActor* ActorSpawn = nullptr;
 		switch (SpawnerMode)
 		{
 		case eSpawnerMode::SINGLE_SPAWN:
 
 			//Change with the pool implementation
-			GetWorld()->SpawnActor(ActorToSpawn);
+			if (ActorsSpawn.Num() == 0)
+			{
+				ActorSpawn = GetWorld()->SpawnActor(ActorToSpawn);
+				ActorsSpawn.Add(ActorSpawn);
+			}
 
 			break;
 		case eSpawnerMode::MULTIPLE_SPAWN:
-			break;
-		case eSpawnerMode::MAX:
+
+			ActorSpawn = GetWorld()->SpawnActor(ActorToSpawn);
+			ActorsSpawn.Add(ActorSpawn);
+
 			break;
 		default:
 			break;
