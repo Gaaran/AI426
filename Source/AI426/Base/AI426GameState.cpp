@@ -3,12 +3,20 @@
 
 #include "AI426/Base/AI426GameState.h"
 #include "AI426/Manager/PoolManager.h"
+#include "../Manager/GlobalEventManager.h"
 
 void AAI426GameState::BeginPlay()
 {
-	if (PoolManager)
+	if (TSubPoolManager)
 	{
-		GetWorld()->SpawnActor(PoolManager);
+		AActor* ActorSpawn = GetWorld()->SpawnActor(TSubPoolManager);
+		PoolManager = Cast<APoolManager>(ActorSpawn);
+	}
+
+	if (TSubGEM)
+	{
+		AActor* ActorSpawn = GetWorld()->SpawnActor(TSubGEM);
+		GEM = Cast<AGlobalEventManager>(ActorSpawn);
 	}
 }
 

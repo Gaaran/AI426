@@ -21,6 +21,9 @@ public:
 	virtual void BeginPLay();
 	virtual void Tick(float DeltaTime);
 
+	UFUNCTION()
+	void RemoveItemFromSpawn(AActor* ActorToRemove);
+
 protected:
 
 	UPROPERTY(EditAnywhere, Category = "AI426")
@@ -29,7 +32,7 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "AI426")
 	float TimerToSpawn = 5.0f;
 
-	UPROPERTY(EditAnywhere, Category = "AI426")
+	UPROPERTY()
 	float SpawnTime = 0.0f;
 
 	UPROPERTY(EditAnywhere, Category = "AI426")
@@ -43,6 +46,5 @@ protected:
 
 	UPROPERTY()
 	TArray<AActor*> ActorsSpawn;
-
 
 };

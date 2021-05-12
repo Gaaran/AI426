@@ -22,6 +22,8 @@ void ASpawnActor::Tick(float DeltaTime)
 	if (SpawnTime >= TimerToSpawn)
 	{
 		AActor* ActorSpawn = nullptr;
+
+		
 		switch (SpawnerMode)
 		{
 		case eSpawnerMode::SINGLE_SPAWN:
@@ -30,18 +32,34 @@ void ASpawnActor::Tick(float DeltaTime)
 			if (ActorsSpawn.Num() == 0)
 			{
 				ActorSpawn = GetWorld()->SpawnActor(ActorToSpawn);
-				ActorsSpawn.Add(ActorSpawn);
+				if (ActorSpawn)
+				{
+					ActorSpawn->SetActorTransform(SpawnPositionArrow->GetComponentTransform());
+					ActorSpawn->SetOwner(this);
+					ActorsSpawn.Add(ActorSpawn);
+				}
 			}
 
 			break;
 		case eSpawnerMode::MULTIPLE_SPAWN:
 
 			ActorSpawn = GetWorld()->SpawnActor(ActorToSpawn);
+			if (ActorSpawn)
+			{
+				ActorSpawn->SetOwner(this);
+			}
 			ActorsSpawn.Add(ActorSpawn);
 
 			break;
 		default:
 			break;
 		}
+
+		SpawnTime = 0;
 	}
+}
+
+void ASpawnActor::RemoveItemFromSpawn(AActor* ActorToRemove)
+{
+	ActorsSpawn.Remove(ActorToRemove);
 }

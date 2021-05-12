@@ -22,7 +22,16 @@ public:
 protected:
 
 	UPROPERTY(EditAnywhere, Category = "AI426 | Managers")
-	TSubclassOf<class APoolManager> PoolManager;
+	TSubclassOf<class APoolManager> TSubPoolManager;
+
+	UPROPERTY()
+	class APoolManager* PoolManager;
+
+	UPROPERTY(EditAnywhere, Category = "AI426 | Managers")
+		TSubclassOf<class AGlobalEventManager> TSubGEM;
+
+	UPROPERTY()
+		class AGlobalEventManager* GEM;
 
 #pragma region DEBUGMESSAGE
 
