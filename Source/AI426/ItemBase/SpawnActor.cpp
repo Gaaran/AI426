@@ -55,7 +55,7 @@ void ASpawnActor::Tick(float DeltaTime)
 			break;
 		}
 
-		SpawnTime = 0;
+		SpawnTime = 0.0f;
 	}
 }
 

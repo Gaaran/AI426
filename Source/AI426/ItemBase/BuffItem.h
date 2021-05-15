@@ -3,14 +3,14 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "AI426/ItemBase/APickUpItem.h"
+#include "AI426/ItemBase/PickUpItem.h"
 #include "AI426/Enums/ItemEnum.h"
-#include "ABuffItem.generated.h"
+#include "BuffItem.generated.h"
 /**
  * 
  */
 UCLASS()
-class AI426_API AABuffItem : public AAPickUpItem
+class AI426_API ABuffItem : public APickUpItem
 {
 	GENERATED_BODY()
 	

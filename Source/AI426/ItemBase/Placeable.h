@@ -4,16 +4,16 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "APlaceable.generated.h"
+#include "Placeable.generated.h"
 
 UCLASS()
-class AI426_API AAPlaceable : public AActor
+class AI426_API APlaceable : public AActor
 {
 	GENERATED_BODY()
 	
 public:	
 	// Sets default values for this actor's properties
-	AAPlaceable();
+	APlaceable();
 
 protected:
 	// Called when the game starts or when spawned

@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "AI426/ItemBase/APlaceable.h"
+#include "AI426/ItemBase/Placeable.h"
 #include "AI426/Enums/ItemEnum.h"
 #include "SpawnActor.generated.h"
 
@@ -11,7 +11,7 @@
  * 
  */
 UCLASS()
-class AI426_API ASpawnActor : public AAPlaceable
+class AI426_API ASpawnActor : public APlaceable
 {
 	GENERATED_BODY()
 	

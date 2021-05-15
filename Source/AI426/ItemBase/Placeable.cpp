@@ -1,10 +1,10 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "AI426/ItemBase/APlaceable.h"
+#include "AI426/ItemBase/Placeable.h"
 
 // Sets default values
-AAPlaceable::AAPlaceable()
+APlaceable::APlaceable()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -16,14 +16,14 @@ AAPlaceable::AAPlaceable()
 }
 
 // Called when the game starts or when spawned
-void AAPlaceable::BeginPlay()
+void APlaceable::BeginPlay()
 {
 	Super::BeginPlay();
 	
 }
 
 // Called every frame
-void AAPlaceable::Tick(float DeltaTime)
+void APlaceable::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 

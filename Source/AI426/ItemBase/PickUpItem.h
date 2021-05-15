@@ -3,19 +3,19 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "AI426/ItemBase/APlaceable.h"
-#include "APickUpItem.generated.h"
+#include "AI426/ItemBase/Placeable.h"
+#include "PickUpItem.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class AI426_API AAPickUpItem : public AAPlaceable
+class AI426_API APickUpItem : public APlaceable
 {
 	GENERATED_BODY()
 
 public:
-	AAPickUpItem();
+	APickUpItem();
 
 protected:
 	
