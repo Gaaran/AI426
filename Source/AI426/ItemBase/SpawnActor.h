@@ -18,13 +18,18 @@ class AI426_API ASpawnActor : public APlaceable
 public:
 	ASpawnActor();
 
-	virtual void BeginPLay();
-	virtual void Tick(float DeltaTime);
-
 	UFUNCTION()
 	void RemoveItemFromSpawn(AActor* ActorToRemove);
 
 protected:
+
+
+	virtual void BeginPlay();
+	virtual void Tick(float DeltaTime);
+	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
+
+	UPROPERTY()
+	class AAI426GameState* GS;
 
 	UPROPERTY(EditAnywhere, Category = "AI426")
 	int32 LimitActorToSpawn = 1;
@@ -32,8 +37,8 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "AI426")
 	float TimerToSpawn = 5.0f;
 
-	UPROPERTY()
-	float SpawnTime = 0.0f;
+	/*UPROPERTY()
+	float SpawnTime = 0.0f;*/
 
 	UPROPERTY(EditAnywhere, Category = "AI426")
 	class UArrowComponent* SpawnPositionArrow;
@@ -42,9 +47,14 @@ protected:
 	eSpawnerMode SpawnerMode = eSpawnerMode::SINGLE_SPAWN;
 
 	UPROPERTY(EditAnywhere, Category = "")
-	TSubclassOf<AActor> ActorToSpawn;
+	TArray<TSubclassOf<AActor>> ActorsToSpawn;
 
 	UPROPERTY()
 	TArray<AActor*> ActorsSpawn;
 
+	UFUNCTION()
+	void SpawnNewActor();
+
+	UFUNCTION()
+	void ItemPickedUp(AActor* ItemEventPickUp);
 };

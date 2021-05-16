@@ -3,6 +3,9 @@
 
 #include "AI426/ItemBase/BuffItem.h"
 #include "../AI426Character.h"
+#include "SpawnActor.h"
+#include "../Manager/GlobalEventManager.h"
+#include "../Base/AI426GameState.h"
 
 
 
@@ -39,6 +42,13 @@ void ABuffItem::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* Othe
 			break;
 		}
 
+		ASpawnActor* SpawnerOwner = Cast<ASpawnActor>(GetOwner());
+
+		if (SpawnerOwner)
+		{
+			SpawnerOwner->RemoveItemFromSpawn(this);
+		}
+		//GS->GetGEM()->EventItemPickUp.Broadcast(this);
 		this->Destroy();//Faire une pool
 	}
 }

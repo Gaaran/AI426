@@ -17,9 +17,12 @@ class AI426_API APickUpItem : public APlaceable
 public:
 	APickUpItem();
 
+	virtual void BeginPlay() override;
 protected:
 	
-	
+	UPROPERTY()
+	class AAI426GameState* GS;
+
 	UPROPERTY(EditAnywhere, Category = "AI426")
 	class UBoxComponent* TriggerBox;
 

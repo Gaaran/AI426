@@ -18,6 +18,16 @@ public:
 
 	virtual void BeginPlay();
 
+	UFUNCTION(BlueprintCallable, Category = "AI426 | Manager")
+	FORCEINLINE class AGlobalEventManager* GetGEM() const
+	{
+		return GEM;
+	}
+	UFUNCTION(BlueprintCallable, Category = "AI426 | Manager")
+	FORCEINLINE class APoolManager* GetPoolManager() const
+	{
+		return PoolManager;
+	}
 
 protected:
 

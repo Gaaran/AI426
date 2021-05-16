@@ -7,6 +7,8 @@
 
 void AAI426GameState::BeginPlay()
 {
+	Super::BeginPlay();
+
 	if (TSubPoolManager)
 	{
 		AActor* ActorSpawn = GetWorld()->SpawnActor(TSubPoolManager);

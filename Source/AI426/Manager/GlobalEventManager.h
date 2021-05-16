@@ -6,8 +6,8 @@
 #include "GameFramework/Actor.h"
 #include "GlobalEventManager.generated.h"
 
-
-DECLARE_DELEGATE(FItemPickUp)
+//Item Event
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FItemPickUp, class AActor*, ItemPickedUp);
 
 UCLASS()
 class AI426_API AGlobalEventManager : public AActor
