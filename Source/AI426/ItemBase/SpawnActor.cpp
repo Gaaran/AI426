@@ -25,6 +25,10 @@ void ASpawnActor::BeginPlay()
 	{
 		GS->GetGEM()->EventItemPickUp.AddDynamic(this, &ASpawnActor::ItemPickedUp);
 	}
+	else
+	{
+		GS->EventGEMCreated.AddDynamic(this, &ASpawnActor::BindFunctionToGEM);
+	}
 }
 
 void ASpawnActor::Tick(float DeltaTime)
@@ -117,9 +121,19 @@ void ASpawnActor::SpawnNewActor()
 
 void ASpawnActor::ItemPickedUp(AActor* ItemEventPickUp)
 {
-	if (ItemEventPickUp == ActorsSpawn[0])
+	if (ActorsSpawn.IsValidIndex(0) && ItemEventPickUp == ActorsSpawn[0])
 	{
 		FTimerHandle timerHandler;
 		GetWorldTimerManager().SetTimer(timerHandler, this, &ASpawnActor::SpawnNewActor, TimerToSpawn, false);
+	}
+}
+
+void ASpawnActor::BindFunctionToGEM(class AGlobalEventManager* GlobalEventManager)
+{
+	GlobalEventManager->EventItemPickUp.AddDynamic(this, &ASpawnActor::ItemPickedUp);
+
+	if (GS)
+	{
+		GS->EventGEMCreated.RemoveDynamic(this, &ASpawnActor::BindFunctionToGEM);
 	}
 }

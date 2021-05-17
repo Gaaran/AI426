@@ -57,4 +57,7 @@ protected:
 
 	UFUNCTION()
 	void ItemPickedUp(AActor* ItemEventPickUp);
+
+	UFUNCTION()
+	void BindFunctionToGEM(class AGlobalEventManager* GlobalEventManager);
 };

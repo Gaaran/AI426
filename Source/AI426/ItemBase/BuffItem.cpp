@@ -9,9 +9,13 @@
 
 
 
+void ABuffItem::BeginPlay()
+{
+	Super::BeginPlay();
+}
+
 void ABuffItem::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-
 	if (OtherActor->IsA<AAI426Character>())
 	{
 		switch (ItemBuffType)
@@ -44,11 +48,15 @@ void ABuffItem::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* Othe
 
 		ASpawnActor* SpawnerOwner = Cast<ASpawnActor>(GetOwner());
 
+		GS->GetGEM()->EventItemPickUp.Broadcast(this);
+
 		if (SpawnerOwner)
 		{
 			SpawnerOwner->RemoveItemFromSpawn(this);
+			SpawnerOwner = nullptr;
 		}
-		//GS->GetGEM()->EventItemPickUp.Broadcast(this);
-		this->Destroy();//Faire une pool
+
+		//this->Destroy();//Faire une pool
+		Destroy();
 	}
 }

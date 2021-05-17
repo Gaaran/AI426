@@ -19,6 +19,8 @@ void AAI426GameState::BeginPlay()
 	{
 		AActor* ActorSpawn = GetWorld()->SpawnActor(TSubGEM);
 		GEM = Cast<AGlobalEventManager>(ActorSpawn);
+
+		EventGEMCreated.Broadcast(GEM);
 	}
 }
 

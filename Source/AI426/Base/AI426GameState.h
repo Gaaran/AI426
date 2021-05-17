@@ -6,6 +6,8 @@
 #include "GameFramework/GameStateBase.h"
 #include "AI426GameState.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FGEMCreated, class AGlobalEventManager*, EventManager);
+
 /**
  * 
  */
@@ -29,6 +31,15 @@ public:
 		return PoolManager;
 	}
 
+	FGEMCreated EventGEMCreated;
+
+#pragma region DEBUGMESSAGE
+
+	static void DebugMessage(FString Message = "Debug Message On Screen", float MessageTimeOnScreen = 5.0f,
+		FColor Messagecolor = FColor::Emerald);
+	static void DebugLogMessage(FString LogMessage);
+#pragma endregion
+
 protected:
 
 	UPROPERTY(EditAnywhere, Category = "AI426 | Managers")
@@ -43,10 +54,5 @@ protected:
 	UPROPERTY()
 		class AGlobalEventManager* GEM;
 
-#pragma region DEBUGMESSAGE
 
-	static void DebugMessage(FString Message = "Debug Message On Screen", float MessageTimeOnScreen = 5.0f,
-		FColor Messagecolor = FColor::Emerald);
-	static void DebugLogMessage(FString LogMessage);
-#pragma endregion
 };
