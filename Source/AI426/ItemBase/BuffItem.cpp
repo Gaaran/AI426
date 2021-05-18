@@ -9,11 +9,6 @@
 
 
 
-void ABuffItem::BeginPlay()
-{
-	Super::BeginPlay();
-}
-
 void ABuffItem::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 	if (OtherActor->IsA<AAI426Character>())
@@ -56,7 +51,6 @@ void ABuffItem::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* Othe
 			SpawnerOwner = nullptr;
 		}
 
-		//this->Destroy();//Faire une pool
-		Destroy();
+		this->Destroy();//Faire une pool
 	}
 }

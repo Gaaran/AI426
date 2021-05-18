@@ -14,6 +14,7 @@ APickUpItem::APickUpItem()
 
 void APickUpItem::BeginPlay()
 {
+	Super::BeginPlay();
 	GS = GetWorld()->GetGameState<AAI426GameState>();
 }
 

@@ -17,7 +17,6 @@ class AI426_API ABuffItem : public APickUpItem
 public:
 
 protected:
-	virtual void BeginPlay() override;
 
 	UPROPERTY(EditAnywhere, Category = "AI426")
 	eItemBuff ItemBuffType = eItemBuff::HEALTH_UP;
